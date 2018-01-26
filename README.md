@@ -81,8 +81,8 @@ $ mkdir ~/Slim && cd ~/Slim
 先安装这个,不然编译到一半会失败
 
 ```
-# apt-get install rsync
-```
+ apt-get install rsync
+
 
 
  开始编译：
