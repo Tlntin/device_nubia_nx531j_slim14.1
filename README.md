@@ -23,35 +23,22 @@ $ chmod a+x ~/bin/repo
 $ export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
 ```
 
-3. 建立LineageOS目录并同步源码和依赖
+3. 建立Slim目录并同步源码和依赖
 
 ```
-$ mkdir ~/LineageOS && cd ~/LineageOS
+$ mkdir ~/Slim && cd ~/Slim
 ```
 
 4.：设置的你Github用户名和邮箱（没有账号的去github官网用邮箱申请一个）
 
-```$ git config --global user.email "qq371043382@Gmail.com"```（"you@example.com"改为你的谷歌邮箱）
+```$ git config --global user.email "you@example.com"```（"you@example.com"改为你的谷歌邮箱）
 
-```$ git config --global user.name "Tlntin"```（"Your Name"改为你的github用户名）
+```$ git config --global user.name "Your Name"```（"Your Name"改为你的github用户名）
 
-```$ repo init -u https://mirrors.tuna.tsinghua.edu.cn/git/lineageOS/LineageOS/android.git -b cm-14.1```
+```$ repo init -u git://github.com/SlimRoms/platform_manifest.git -b ng7.1```
 
 4.打开 ```.repo/manifest.xml```，请到文件管理器菜单栏打开运行查看隐藏文件
 
-将
-
-```
-  <remote  name="github"
-           fetch=".."
-```
-
-改成
-
-```
-  <remote  name="github"
-           fetch="https://mirrors.tuna.tsinghua.edu.cn/git/lineageOS/"
-```
 
 将
 
@@ -69,18 +56,7 @@ $ mkdir ~/LineageOS && cd ~/LineageOS
 
 ```$ repo sync```(同步失败一次就继续用这个命令同步) 
 
-异常处理
 
-对于有些 Lineage 的 prebuild 仓库，因为使用了 ```clone-depth="1"``` 导致了 HTTP 协议下同步出现错误 ```fatal: dumb http transport does not support --depth```，
-解决的办法如下：
-
-同步 cm-14.1 及以下版本，在终端中输入：
-
-```
-$ sed -i 's/clone-depth="1"//' .repo/manifest.xml
-```
-```
-$ sed -i 's/clone-depth="1"//' .repo/manifests/snippets/cm.xml (具体是不是叫cm.xml得看实际情况)
 ```
 
 同步完源码后，需要下这些东西，路径没有就自己建一个。这个 device 是解压重命名为nx53j，放到 ```device/nubia``` 目录。
@@ -127,7 +103,7 @@ $ export WITH_SU=true
 
 4.设置缓存
 ```
-$ ~/Los14/prebuilts/misc/linux-x86/ccache/ccache -M 80G
+$ ~/Slim/prebuilts/misc/linux-x86/ccache/ccache -M 80G
 ```
 ```
 $ export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx16000m" （本人内存8g，所以这里允许内存填8192M）
